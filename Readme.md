@@ -1,7 +1,4 @@
 # Conway's Game of Life
-
-![screenshot](screenshot.png)
-
 From [Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), the free encyclopedia:
 
 > The Game of Life, also known simply as Life, is a cellular automaton devised by
@@ -13,6 +10,9 @@ From [Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), the fre
 > configuration and observing how it evolves, or, for advanced players, by
 > creating patterns with particular properties
 
+
+
+![screenshot](screenshot.png)
 This a go implementation of Conway's Game of Life. It allow to specify the size
 of the size of the starting grid, aswell as the precentage of living cells at
 the start. The grid is displayed using ascii.
