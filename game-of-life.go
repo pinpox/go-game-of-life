@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
-	"gopkg.in/alecthomas/kingpin.v2"
 	"log"
 	"math/rand"
 	"os"
 	"os/exec"
 	"time"
+
+	"gopkg.in/alecthomas/kingpin.v2"
 )
 
 var (
@@ -46,8 +47,7 @@ func main() {
 		cmd.Stdout = os.Stdout
 		cmd.Run()
 		g.Print()
-		fmt.Print("Generation: ")
-		fmt.Println(i)
+		fmt.Printf("Generation: %d\n", -i)
 		g.Iterate()
 		time.Sleep(sleepTime)
 	}
