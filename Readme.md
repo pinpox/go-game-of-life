@@ -24,7 +24,17 @@ You can pass the following parameters to the executable, all of them are
 optional and will use a default, if ommitted.
 
 ```
-TODO
+usage: game-of-life [<flags>]
+
+Flags:
+      --help           Show context-sensitive help (also try --help-long and --help-man).
+  -x, --xsize=80       The width of the grid
+  -y, --ysize=15       The height of the grid
+  -i, --iterations=-1  Number of iterations. Any negative number will use the default, infinity
+  -f, --fps=25         Frames per second, how log to wait until the next iteration is displayed
+  -p, --percentage=35  Percentage of living cells at the start
+      --version        Show application version.
+
 ```
 
 ## This Software
