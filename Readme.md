@@ -31,7 +31,12 @@ The evolution of the cells follows this four simple rules:
 
 ## Install
 
-TODO
+Just get the source and build/install as normal
+
+```
+go get -u github.com/binaryplease/go-game-of-life
+go install github.com/binaryplease/go-game-of-life
+```
 
 ## Usage
 You can pass the following parameters to the executable, all of them are
