@@ -2,11 +2,20 @@ package main
 
 import (
 	"fmt"
+	"gopkg.in/alecthomas/kingpin.v2"
 	"log"
 	"math/rand"
 	"os"
 	"os/exec"
 	"time"
+)
+
+var (
+	inputX = kingpin.Flag("xsize", "The width of the grid").Short('x').Default("80").Int()
+	inputY = kingpin.Flag("ysize", "The height of the grid").Short('y').Default("15").Int()
+	inputI = kingpin.Flag("iterations", "Number of iterations. Any negative number will use the default, infinity").Short('i').Default("-1").Int()
+	inputF = kingpin.Flag("fps", "Frames per second, how log to wait until the next iteration is displayed").Short('f').Default("25").Int()
+	inputP = kingpin.Flag("percentage", "Percentage of living cells at the start").Short('p').Default("35").Int()
 )
 
 /*
@@ -19,10 +28,20 @@ Coordinates start top left
 
 func main() {
 
-	g := NewGameBoard(80, 30)
-	g.RandInit(10)
+	kingpin.Version("1.0.0")
+	kingpin.Parse()
 
-	for i := 0; i < 1000; i++ {
+	g := NewGameBoard(*inputX, *inputY)
+	g.RandInit(*inputP)
+	sleepTime := time.Duration(1000 / *inputF) * time.Millisecond
+
+	//Main game loop
+	i := *inputI
+	for {
+		if i == 0 {
+			break
+		}
+		i--
 		cmd := exec.Command("clear")
 		cmd.Stdout = os.Stdout
 		cmd.Run()
@@ -30,7 +49,7 @@ func main() {
 		fmt.Print("Generation: ")
 		fmt.Println(i)
 		g.Iterate()
-		time.Sleep(50 * time.Millisecond)
+		time.Sleep(sleepTime)
 	}
 }
 
