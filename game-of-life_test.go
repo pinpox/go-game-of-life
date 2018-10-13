@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"reflect"
 	"testing"
 )
 
@@ -405,6 +406,162 @@ func TestGameBoard_Equal(t *testing.T) {
 			if got := tt.gba.Equal(tt.gbb); got != tt.want {
 				t.Errorf("GameBoard.Equal() = %v, want %v", got, tt.want)
 			}
+		})
+	}
+}
+
+func Test_main(t *testing.T) {
+	tests := []struct {
+		name string
+	}{
+		// TODO: Add test cases.
+	}
+	for range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			main()
+		})
+	}
+}
+
+func TestNewGameBoard(t *testing.T) {
+	type args struct {
+		x int
+		y int
+	}
+	tests := []struct {
+		name string
+		args args
+		want *GameBoard
+	}{
+		// TODO: Add test cases.
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := NewGameBoard(tt.args.x, tt.args.y); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("NewGameBoard() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestGameBoard_RandInit(t *testing.T) {
+	type fields struct {
+		generation int
+		xSize      int
+		ySize      int
+		cells      []bool
+	}
+	type args struct {
+		percentage int
+	}
+	tests := []struct {
+		name   string
+		fields fields
+		args   args
+	}{
+		// TODO: Add test cases.
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			gb := &GameBoard{
+				generation: tt.fields.generation,
+				xSize:      tt.fields.xSize,
+				ySize:      tt.fields.ySize,
+				cells:      tt.fields.cells,
+			}
+			gb.RandInit(tt.args.percentage)
+		})
+	}
+}
+
+func TestGameBoard_Set(t *testing.T) {
+	type fields struct {
+		generation int
+		xSize      int
+		ySize      int
+		cells      []bool
+	}
+	type args struct {
+		x   int
+		y   int
+		val bool
+	}
+	tests := []struct {
+		name   string
+		fields fields
+		args   args
+	}{
+		// TODO: Add test cases.
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			gb := &GameBoard{
+				generation: tt.fields.generation,
+				xSize:      tt.fields.xSize,
+				ySize:      tt.fields.ySize,
+				cells:      tt.fields.cells,
+			}
+			gb.Set(tt.args.x, tt.args.y, tt.args.val)
+		})
+	}
+}
+
+func TestGameBoard_Get(t *testing.T) {
+	type fields struct {
+		generation int
+		xSize      int
+		ySize      int
+		cells      []bool
+	}
+	type args struct {
+		x int
+		y int
+	}
+	tests := []struct {
+		name   string
+		fields fields
+		args   args
+		want   bool
+	}{
+		// TODO: Add test cases.
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			gb := &GameBoard{
+				generation: tt.fields.generation,
+				xSize:      tt.fields.xSize,
+				ySize:      tt.fields.ySize,
+				cells:      tt.fields.cells,
+			}
+			if got := gb.Get(tt.args.x, tt.args.y); got != tt.want {
+				t.Errorf("GameBoard.Get() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestGameBoard_Print(t *testing.T) {
+	type fields struct {
+		generation int
+		xSize      int
+		ySize      int
+		cells      []bool
+	}
+	tests := []struct {
+		name   string
+		fields fields
+	}{
+		// TODO: Add test cases.
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			gb := &GameBoard{
+				generation: tt.fields.generation,
+				xSize:      tt.fields.xSize,
+				ySize:      tt.fields.ySize,
+				cells:      tt.fields.cells,
+			}
+			gb.Print()
 		})
 	}
 }
