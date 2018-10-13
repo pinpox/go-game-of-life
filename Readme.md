@@ -58,3 +58,7 @@ is nice to watch for a while.
 
 You may fork, modify, copy, distribute, watch it for hours or do whatever you want with it. Have
 fun!
+
+# Contributing
+Pull-requests, issues, comments and other improvements are very welcome!
+
