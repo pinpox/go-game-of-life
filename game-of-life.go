@@ -53,17 +53,23 @@ func main() {
 	}
 }
 
+// GameBoard holds the grid on which the cells are placed as well as a few of it's attributes.
+// It provides the necessary methods to run the initialize and start the game
 type GameBoard struct {
 	generation   int
 	xSize, ySize int
 	cells        []bool
 }
 
+// NewGameBoard initializes a new game (constructor) with an all-dead grid
 func NewGameBoard(x, y int) *GameBoard {
 	cells := make([]bool, x*y)
 	return &GameBoard{generation: 0, xSize: x, ySize: y, cells: cells}
 }
 
+// RandInit sets a given percentage of the cells in the grid to "alive".
+// The grid is then randomized, leaving a random grid with a defined amount of
+// living cells.
 func (gb *GameBoard) RandInit(percentage int) {
 
 	// Calculate number of living cells
@@ -85,6 +91,8 @@ func (gb *GameBoard) RandInit(percentage int) {
 	gb.cells = vals
 }
 
+// Iterate implements the rules for Conway's Game of Life. It takes the current
+// grid, applies the 4 rules and sets the grid to it's new state.
 func (gb *GameBoard) Iterate() {
 
 	gbOld := NewGameBoard(gb.xSize, gb.ySize)
@@ -120,6 +128,8 @@ func (gb *GameBoard) Iterate() {
 	}
 }
 
+//Equal is a helper function to compare a GameBoard to another. It returns true
+//if size, dimensions and the cell's states are identical
 func (gb *GameBoard) Equal(gb2 *GameBoard) bool {
 	if gb.xSize != gb2.xSize || gb.ySize != gb2.ySize {
 		return false
@@ -138,6 +148,8 @@ func (gb *GameBoard) Equal(gb2 *GameBoard) bool {
 	return true
 }
 
+// Set sets a cell defined by it's x and y coordinates to a given state (alive:
+// true, dead: false)
 func (gb *GameBoard) Set(x, y int, val bool) {
 	if !gb.InBounds(x, y) {
 
@@ -149,6 +161,8 @@ func (gb *GameBoard) Set(x, y int, val bool) {
 	gb.cells[y*(gb.xSize)+x] = val
 }
 
+// Get retrieves a cell's state by it's x and y coordinates (alive: true, dead:
+// false)
 func (gb *GameBoard) Get(x, y int) bool {
 	if x > gb.xSize-1 || x < 0 || y > gb.ySize-1 || y < 0 {
 		log.Fatal("Invalid Coordinate")
@@ -158,6 +172,7 @@ func (gb *GameBoard) Get(x, y int) bool {
 	return gb.cells[y*(gb.xSize)+x]
 }
 
+//Neighbours returns the number of alive neighbours of a given cell
 func (gb *GameBoard) Neighbours(x, y int) int {
 	count := 0
 	arr := []int{-1, 0, 1}
@@ -174,6 +189,7 @@ func (gb *GameBoard) Neighbours(x, y int) int {
 	return count
 }
 
+//InBounds is a helper function to check if a coordinate tupel is inside the grid.
 func (gb *GameBoard) InBounds(x int, y int) bool {
 	return (x >= 0 &&
 		x < gb.xSize &&
@@ -181,6 +197,7 @@ func (gb *GameBoard) InBounds(x int, y int) bool {
 		y < gb.ySize)
 }
 
+// Print displays a ASCII representation of the grid to stout
 func (gb *GameBoard) Print() {
 	//Top margin
 	fmt.Print("╔")
