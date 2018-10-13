@@ -216,15 +216,109 @@ func TestGameBoard_InBounds(t *testing.T) {
 
 func TestGameBoard_Iterate(t *testing.T) {
 
-	gb0 := NewGameBoard(5, 5)
-	gb1 := NewGameBoard(5, 5)
-	gb2 := NewGameBoard(5, 5)
-	gb3 := NewGameBoard(5, 5)
+	// Any live cell with fewer than two live neighbors dies, as if by underpopulation
+	gb0 := NewGameBoard(3, 3)
+	/*
+		0 0 0
+		0 1 0
+		0 0 1
+	*/
 
-	gb0want := NewGameBoard(5, 5)
-	gb1want := NewGameBoard(5, 5)
-	gb2want := NewGameBoard(5, 5)
-	gb3want := NewGameBoard(5, 5)
+	gb0.Set(1, 1, true)
+	gb0.Set(2, 2, true)
+
+	gb0want := NewGameBoard(3, 3)
+
+	/*
+		0 0 0
+		0 0 0
+		0 0 0
+	*/
+
+	// Any live cell with two or three live neighbors lives on to the next generation
+	gb1 := NewGameBoard(3, 3)
+
+	/*
+		0 0 0
+		1 1 0
+		0 1 1
+	*/
+
+	gb1.Set(0, 1, true)
+	gb1.Set(1, 1, true)
+	gb1.Set(1, 2, true)
+	gb1.Set(2, 2, true)
+
+	gb1want := NewGameBoard(3, 3)
+
+	/*
+		0 0 0
+		1 1 1
+		1 1 1
+	*/
+
+	gb1want.Set(0, 1, true)
+	gb1want.Set(0, 2, true)
+	gb1want.Set(1, 1, true)
+	gb1want.Set(1, 2, true)
+	gb1want.Set(2, 1, true)
+	gb1want.Set(2, 2, true)
+
+	// Any live cell with more than three live neighbors dies, as if by overpopulation
+	gb2 := NewGameBoard(3, 3)
+
+	/*
+		1 1 1
+		1 1 1
+		1 1 1
+	*/
+
+	gb2.Set(0, 0, true)
+	gb2.Set(1, 0, true)
+	gb2.Set(2, 0, true)
+	gb2.Set(0, 1, true)
+	gb2.Set(1, 1, true)
+	gb2.Set(2, 1, true)
+	gb2.Set(0, 2, true)
+	gb2.Set(1, 2, true)
+	gb2.Set(2, 2, true)
+
+	gb2want := NewGameBoard(3, 3)
+
+	/*
+		1 0 1
+		0 0 0
+		1 0 1
+	*/
+
+	gb2want.Set(0, 0, true)
+	gb2want.Set(2, 0, true)
+	gb2want.Set(0, 2, true)
+	gb2want.Set(2, 2, true)
+
+	// Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction
+	gb3 := NewGameBoard(3, 3)
+
+	/*
+		0 0 0
+		0 0 0
+		1 1 1
+	*/
+
+	gb3.Set(0, 2, true)
+	gb3.Set(1, 2, true)
+	gb3.Set(2, 2, true)
+
+	gb3want := NewGameBoard(3, 3)
+
+	/*
+		0 0 0
+		0 1 0
+		0 1 0
+	*/
+
+	gb3want.Set(1, 1, true)
+	gb3want.Set(1, 2, true)
 
 	tests := []struct {
 		name string

@@ -20,12 +20,9 @@ Coordinates start top left
 func main() {
 
 	g := NewGameBoard(80, 30)
-	// g.RandInit(600)
-	g.Set(10, 10, true)
-	g.Set(10, 11, true)
-	g.Set(10, 11, true)
+	g.RandInit(10)
 
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 1000; i++ {
 		cmd := exec.Command("clear")
 		cmd.Stdout = os.Stdout
 		cmd.Run()
@@ -33,7 +30,7 @@ func main() {
 		fmt.Print("Generation: ")
 		fmt.Println(i)
 		g.Iterate()
-		time.Sleep(1000 * time.Millisecond)
+		time.Sleep(50 * time.Millisecond)
 	}
 }
 
@@ -48,15 +45,25 @@ func NewGameBoard(x, y int) *GameBoard {
 	return &GameBoard{generation: 0, xSize: x, ySize: y, cells: cells}
 }
 
-func (gb *GameBoard) RandInit(numAlive int) {
+func (gb *GameBoard) RandInit(percentage int) {
 
-	//TODO check for doubles
-	rand.Seed(time.Now().UnixNano())
-	// rand.Seed(1)
+	// Calculate number of living cells
+	numAlive := percentage * len(gb.cells) / 100
 
+	// Insert living cells at the beginning
 	for i := 0; i < numAlive; i++ {
-		gb.cells[rand.Intn(len(gb.cells))] = true
+		gb.cells[i] = true
 	}
+
+	// Randomize slice
+	vals := gb.cells
+	r := rand.New(rand.NewSource(time.Now().Unix()))
+	for n := len(vals); n > 0; n-- {
+		randIndex := r.Intn(n)
+		vals[n-1], vals[randIndex] = vals[randIndex], vals[n-1]
+	}
+
+	gb.cells = vals
 }
 
 func (gb *GameBoard) Iterate() {
@@ -159,7 +166,7 @@ func (gb *GameBoard) Print() {
 	//Top margin
 	fmt.Print("╔")
 	for x := 1; x <= gb.xSize; x++ {
-		fmt.Print("═")
+		fmt.Print("══")
 	}
 	fmt.Println("╗")
 
@@ -169,9 +176,9 @@ func (gb *GameBoard) Print() {
 		// Collumns
 		for x := 0; x < gb.xSize; x++ {
 			if gb.Get(x, y) {
-				fmt.Print("█")
+				fmt.Print("██")
 			} else {
-				fmt.Print(" ")
+				fmt.Print("  ")
 			}
 		}
 		fmt.Println("║")
@@ -180,7 +187,7 @@ func (gb *GameBoard) Print() {
 	//Bottom margin
 	fmt.Print("╚")
 	for x := 1; x <= gb.xSize; x++ {
-		fmt.Print("═")
+		fmt.Print("══")
 	}
 	fmt.Println("╝")
 }
