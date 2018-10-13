@@ -3,23 +3,16 @@ sudo: false
 language: go
 
 go:
-  - master
+ - master
 
-git:
-  depth: 1
+script:
+ - go build -x -v ./game-of-life.go
+ - go test -race -coverprofile=coverage.txt -covermode=atomic -a -x -v *.go
 
 notifications:
   email:
     recipients:
       - pablo1@mailbox.org
  
-before_script:
-  - go install ./vendor/github.com/golangci/golangci-lint/cmd/golangci-lint
-
-script:
-  - golangci-lint run       # run a bunch of code checkers/linters in parallel
-  - go build -x -v ./game-of-life.go
-  - go test -v -race -coverprofile=coverage.txt -covermode=atomic -a -x -v *.go
-
 after_success:
-- bash <(curl -s https://codecov.io/bash)
+ - bash <(curl -s https://codecov.io/bash)
