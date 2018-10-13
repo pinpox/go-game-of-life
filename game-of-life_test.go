@@ -154,25 +154,25 @@ func TestGameBoard_Neighbours(t *testing.T) {
 		y    int
 		want int
 	}{
-		{"0 Neigbours", gb0, 2, 2, 0},
-		{"1 Neigbours", gb1, 2, 2, 1},
-		{"2 Neigbours", gb2, 2, 2, 2},
-		{"3 Neigbours", gb3, 2, 2, 3},
-		{"4 Neigbours", gb4, 2, 2, 4},
-		{"5 Neigbours", gb5, 2, 2, 5},
-		{"6 Neigbours", gb6, 2, 2, 6},
-		{"7 Neigbours", gb7, 2, 2, 7},
-		{"8 Neigbours", gb8, 2, 2, 8},
+		{"0 Neighbours", gb0, 2, 2, 0},
+		{"1 Neighbours", gb1, 2, 2, 1},
+		{"2 Neighbours", gb2, 2, 2, 2},
+		{"3 Neighbours", gb3, 2, 2, 3},
+		{"4 Neighbours", gb4, 2, 2, 4},
+		{"5 Neighbours", gb5, 2, 2, 5},
+		{"6 Neighbours", gb6, 2, 2, 6},
+		{"7 Neighbours", gb7, 2, 2, 7},
+		{"8 Neighbours", gb8, 2, 2, 8},
 
-		{"0 Neigbours, corner top left", gb9, 0, 0, 0},
-		{"1 Neigbours, corner top left", gb10, 0, 0, 1},
-		{"2 Neigbours, corner top left", gb11, 0, 0, 2},
-		{"3 Neigbours, corner top left", gb12, 0, 0, 3},
+		{"0 Neighbours, corner top left", gb9, 0, 0, 0},
+		{"1 Neighbours, corner top left", gb10, 0, 0, 1},
+		{"2 Neighbours, corner top left", gb11, 0, 0, 2},
+		{"3 Neighbours, corner top left", gb12, 0, 0, 3},
 
-		{"0 Neigbours, corner bottom right", gb13, 4, 4, 0},
-		{"1 Neigbours, corner bottom right", gb14, 4, 4, 1},
-		{"2 Neigbours, corner bottom right", gb15, 4, 4, 2},
-		{"3 Neigbours, corner bottom right", gb16, 4, 4, 3},
+		{"0 Neighbours, corner bottom right", gb13, 4, 4, 0},
+		{"1 Neighbours, corner bottom right", gb14, 4, 4, 1},
+		{"2 Neighbours, corner bottom right", gb15, 4, 4, 2},
+		{"3 Neighbours, corner bottom right", gb16, 4, 4, 3},
 	}
 
 	for _, tt := range tests {
