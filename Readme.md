@@ -17,7 +17,16 @@ This a go implementation of Conway's Game of Life. It allow to specify the size
 of the size of the starting grid, aswell as the precentage of living cells at
 the start. The grid is displayed using ascii.
 
+
+The evolution of the cells follows this four simple rules:
+    1. Any live cell with fewer than two live neighbors dies, as if by underpopulation.
+    2. Any live cell with two or three live neighbors lives on to the next generation.
+    3. Any live cell with more than three live neighbors dies, as if by overpopulation.
+    4. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+
 ## Install
+
+TODO
 
 ## Usage
 You can pass the following parameters to the executable, all of them are
