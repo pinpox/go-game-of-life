@@ -1,4 +1,7 @@
 [![Build Status](https://api.travis-ci.org/binaryplease/go-game-of-life.svg)](http://travis-ci.org/binaryplease/go-game-of-life) [![GoDoc](https://godoc.org/github.com/binaryplease/go-game-of-life?status.svg)](http://godoc.org/github.com/binaryplease/go-game-of-life)
+[![Go Report Card](https://goreportcard.com/badge/github.com/binaryplease/go-game-of-life)](https://goreportcard.com/report/github.com/binaryplease/go-game-of-life)
+[![codecov](https://codecov.io/gh/binaryplease/go-game-of-life/branch/master/graph/badge.svg)](https://codecov.io/gh/binaryplease/go-game-of-life)
+
 
 # Conway's Game of Life
 From [Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), the free encyclopedia:
