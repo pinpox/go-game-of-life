@@ -494,33 +494,53 @@ func TestGameBoard_Set(t *testing.T) {
 }
 
 func TestGameBoard_Get(t *testing.T) {
-	type fields struct {
-		generation int
-		xSize      int
-		ySize      int
-		cells      []bool
-	}
-	type args struct {
-		x int
-		y int
-	}
+
+	gb0 := NewGameBoard(5, 3)
+	gb1 := NewGameBoard(5, 3)
+	gb2 := NewGameBoard(5, 3)
+	gb3 := NewGameBoard(5, 3)
+
+	gb4 := NewGameBoard(5, 3)
+	gb4.cells = []bool{
+		true, false, false, false, false,
+		false, false, false, false, false,
+		false, false, false, false, false}
+	gb5 := NewGameBoard(5, 3)
+	gb5.cells = []bool{
+		false, false, false, false, true,
+		false, false, false, false, false,
+		false, false, false, false, false}
+	gb6 := NewGameBoard(5, 3)
+	gb6.cells = []bool{
+		false, false, false, false, false,
+		false, false, false, false, false,
+		true, false, false, false, false}
+	gb7 := NewGameBoard(5, 3)
+	gb7.cells = []bool{
+		false, false, false, false, false,
+		false, false, false, false, false,
+		false, false, false, false, true}
+
 	tests := []struct {
-		name   string
-		fields fields
-		args   args
-		want   bool
+		name string
+		gb   *GameBoard
+		x    int
+		y    int
+		want bool
 	}{
-		// TODO: Add test cases.
+		{"Top left, dead", gb0, 0, 0, false},
+		{"Top right, dead", gb1, 4, 0, false},
+		{"Bottom left, dead", gb2, 0, 2, false},
+		{"Bottom right, dead", gb3, 4, 2, false},
+		{"Top left, alive", gb4, 0, 0, true},
+		{"Top right, alive", gb5, 4, 0, true},
+		{"Bottom left, alive", gb6, 0, 2, true},
+		{"Bottom right, alive", gb7, 4, 2, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			gb := &GameBoard{
-				generation: tt.fields.generation,
-				xSize:      tt.fields.xSize,
-				ySize:      tt.fields.ySize,
-				cells:      tt.fields.cells,
-			}
-			if got := gb.Get(tt.args.x, tt.args.y); got != tt.want {
+			gb := tt.gb
+			if got := gb.Get(tt.x, tt.y); got != tt.want {
 				t.Errorf("GameBoard.Get() = %v, want %v", got, tt.want)
 			}
 		})
