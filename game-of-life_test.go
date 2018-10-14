@@ -496,30 +496,60 @@ func TestGameBoard_Set(t *testing.T) {
 func TestGameBoard_Get(t *testing.T) {
 
 	gb0 := NewGameBoard(5, 3)
+	gb0.cells = []bool{
+		false, true, true, true, true,
+		true, true, true, true, true,
+		true, true, true, true, true,
+	}
+
 	gb1 := NewGameBoard(5, 3)
+	gb1.cells = []bool{
+		true, true, true, true, false,
+		true, true, true, true, true,
+		true, true, true, true, true,
+	}
+
 	gb2 := NewGameBoard(5, 3)
+	gb2.cells = []bool{
+		true, true, true, true, true,
+		true, true, true, true, true,
+		false, true, true, true, true,
+	}
+
 	gb3 := NewGameBoard(5, 3)
+	gb3.cells = []bool{
+		true, true, true, true, true,
+		true, true, true, true, true,
+		true, true, true, true, false,
+	}
 
 	gb4 := NewGameBoard(5, 3)
 	gb4.cells = []bool{
 		true, false, false, false, false,
 		false, false, false, false, false,
-		false, false, false, false, false}
+		false, false, false, false, false,
+	}
+
 	gb5 := NewGameBoard(5, 3)
 	gb5.cells = []bool{
 		false, false, false, false, true,
 		false, false, false, false, false,
-		false, false, false, false, false}
+		false, false, false, false, false,
+	}
+
 	gb6 := NewGameBoard(5, 3)
 	gb6.cells = []bool{
 		false, false, false, false, false,
 		false, false, false, false, false,
-		true, false, false, false, false}
+		true, false, false, false, false,
+	}
+
 	gb7 := NewGameBoard(5, 3)
 	gb7.cells = []bool{
 		false, false, false, false, false,
 		false, false, false, false, false,
-		false, false, false, false, true}
+		false, false, false, false, true,
+	}
 
 	tests := []struct {
 		name string
