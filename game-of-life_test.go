@@ -441,33 +441,86 @@ func TestGameBoard_RandInit(t *testing.T) {
 }
 
 func TestGameBoard_Set(t *testing.T) {
-	type fields struct {
-		generation int
-		xSize      int
-		ySize      int
-		cells      []bool
+
+	// Set dead cell to alive
+	gb0 := NewGameBoard(3, 3)
+	gb0.cells = []bool{
+		false, false, false,
+		false, false, false,
+		false, false, false,
 	}
-	type args struct {
-		x   int
-		y   int
-		val bool
+
+	gb0want := NewGameBoard(3, 3)
+	gb0want.cells = []bool{
+		false, false, false,
+		false, true, false,
+		false, false, false,
 	}
+
+	// Set dead cell to dead
+	gb1 := NewGameBoard(3, 3)
+	gb1.cells = []bool{
+		false, false, false,
+		false, false, false,
+		false, false, false,
+	}
+
+	gb1want := NewGameBoard(3, 3)
+	gb1want.cells = []bool{
+		false, false, false,
+		false, false, false,
+		false, false, false,
+	}
+	// Set living cell to alive
+	gb2 := NewGameBoard(3, 3)
+	gb2.cells = []bool{
+		false, false, false,
+		false, true, false,
+		false, false, false,
+	}
+
+	gb2want := NewGameBoard(3, 3)
+	gb2want.cells = []bool{
+		false, false, false,
+		false, true, false,
+		false, false, false,
+	}
+	// Set living cell to dead
+	gb3 := NewGameBoard(3, 3)
+	gb3.cells = []bool{
+		false, false, false,
+		false, true, false,
+		false, false, false,
+	}
+
+	gb3want := NewGameBoard(3, 3)
+	gb3want.cells = []bool{
+		false, false, false,
+		false, false, false,
+		false, false, false,
+	}
+
 	tests := []struct {
-		name   string
-		fields fields
-		args   args
+		name string
+		gb   *GameBoard
+		want *GameBoard
+		x    int
+		y    int
+		val  bool
 	}{
-		// TODO: Add test cases.
+		{"Set dead cell to alive", gb0, gb0want, 1, 1, true},
+		{"Set dead cell to dead", gb1, gb1want, 1, 1, false},
+		{"Set living cell to alive", gb2, gb2want, 1, 1, true},
+		{"Set living cell to dead", gb3, gb3want, 1, 1, false},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			gb := &GameBoard{
-				generation: tt.fields.generation,
-				xSize:      tt.fields.xSize,
-				ySize:      tt.fields.ySize,
-				cells:      tt.fields.cells,
+			gb := tt.gb
+			gb.Set(tt.x, tt.y, tt.val)
+
+			if !gb.Equal(tt.want) {
+				t.Errorf("GameBoard.Set() = %v, want %v", gb, tt.want)
 			}
-			gb.Set(tt.args.x, tt.args.y, tt.args.val)
 		})
 	}
 }
