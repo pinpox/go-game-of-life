@@ -2,6 +2,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/binaryplease/go-game-of-life)](https://goreportcard.com/report/github.com/binaryplease/go-game-of-life)
 [![codecov](https://codecov.io/gh/binaryplease/go-game-of-life/branch/master/graph/badge.svg)](https://codecov.io/gh/binaryplease/go-game-of-life)
 [![Maintainability](https://api.codeclimate.com/v1/badges/65217f7940ee0e37d474/maintainability)](https://codeclimate.com/github/binaryplease/go-game-of-life/maintainability)
+[![HitCount](http://hits.dwyl.io/binaryplease/go-game-of-life.svg)](http://hits.dwyl.io/binaryplease/go-game-of-life)
 
 
 # Conway's Game of Life
