@@ -411,31 +411,31 @@ func TestGameBoard_Equal(t *testing.T) {
 }
 
 func TestGameBoard_RandInit(t *testing.T) {
-	type fields struct {
-		generation int
-		xSize      int
-		ySize      int
-		cells      []bool
-	}
-	type args struct {
-		percentage int
-	}
 	tests := []struct {
-		name   string
-		fields fields
-		args   args
+		name       string
+		gb         *GameBoard
+		percentage int
+		wantAlive  int
 	}{
-		// TODO: Add test cases.
+		{"0 percent", NewGameBoard(10, 5), 0, 0},
+		{"30 percent", NewGameBoard(10, 5), 30, 15},
+		{"50 percent", NewGameBoard(10, 5), 50, 25},
+		{"100 percent", NewGameBoard(10, 5), 100, 50},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			gb := &GameBoard{
-				generation: tt.fields.generation,
-				xSize:      tt.fields.xSize,
-				ySize:      tt.fields.ySize,
-				cells:      tt.fields.cells,
+			tt.gb.RandInit(tt.percentage)
+
+			count := 0
+			for _, v := range tt.gb.cells {
+				if v {
+					count++
+				}
 			}
-			gb.RandInit(tt.args.percentage)
+
+			if count != tt.wantAlive {
+				t.Errorf("GameBoard.RandInit() ran, %v, cells alive,  want %v", count, tt.wantAlive)
+			}
 		})
 	}
 }
