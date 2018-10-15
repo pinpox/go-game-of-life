@@ -1,6 +1,7 @@
 [![Build Status](https://api.travis-ci.org/binaryplease/go-game-of-life.svg)](http://travis-ci.org/binaryplease/go-game-of-life) [![GoDoc](https://godoc.org/github.com/binaryplease/go-game-of-life?status.svg)](http://godoc.org/github.com/binaryplease/go-game-of-life)
 [![Go Report Card](https://goreportcard.com/badge/github.com/binaryplease/go-game-of-life)](https://goreportcard.com/report/github.com/binaryplease/go-game-of-life)
 [![codecov](https://codecov.io/gh/binaryplease/go-game-of-life/branch/master/graph/badge.svg)](https://codecov.io/gh/binaryplease/go-game-of-life)
+[![Maintainability](https://api.codeclimate.com/v1/badges/65217f7940ee0e37d474/maintainability)](https://codeclimate.com/github/binaryplease/go-game-of-life/maintainability)
 
 
 # Conway's Game of Life
