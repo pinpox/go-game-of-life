@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"reflect"
+	// "reflect"
 	"testing"
 )
 
@@ -405,27 +405,6 @@ func TestGameBoard_Equal(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := tt.gba.Equal(tt.gbb); got != tt.want {
 				t.Errorf("GameBoard.Equal() = %v, want %v", got, tt.want)
-			}
-		})
-	}
-}
-
-func TestNewGameBoard(t *testing.T) {
-	type args struct {
-		x int
-		y int
-	}
-	tests := []struct {
-		name string
-		args args
-		want *GameBoard
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := NewGameBoard(tt.args.x, tt.args.y); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("NewGameBoard() = %v, want %v", got, tt.want)
 			}
 		})
 	}
