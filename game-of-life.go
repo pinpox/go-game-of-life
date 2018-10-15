@@ -53,34 +53,34 @@ func main() {
 	}
 }
 
-// GameBoard holds the grid on which the cells are placed as well as a few of it's attributes.
-// It provides the necessary methods to run the initialize and start the game
+//GameBoard holds the grid on which the cells are placed as well as a few of it's attributes.
+//It provides the necessary methods to run the initialize and start the game
 type GameBoard struct {
 	generation   int
 	xSize, ySize int
 	cells        []bool
 }
 
-// NewGameBoard initializes a new game (constructor) with an all-dead grid
+//NewGameBoard initializes a new game (constructor) with an all-dead grid
 func NewGameBoard(x, y int) *GameBoard {
 	cells := make([]bool, x*y)
 	return &GameBoard{generation: 0, xSize: x, ySize: y, cells: cells}
 }
 
-// RandInit sets a given percentage of the cells in the grid to "alive".
-// The grid is then randomized, leaving a random grid with a defined amount of
-// living cells.
+//RandInit sets a given percentage of the cells in the grid to "alive".
+//The grid is then randomized, leaving a random grid with a defined amount of
+//living cells.
 func (gb *GameBoard) RandInit(percentage int) {
 
-	// Calculate number of living cells
+	//Calculate number of living cells
 	numAlive := percentage * len(gb.cells) / 100
 
-	// Insert living cells at the beginning
+	//Insert living cells at the beginning
 	for i := 0; i < numAlive; i++ {
 		gb.cells[i] = true
 	}
 
-	// Randomize slice
+	//Randomize slice
 	vals := gb.cells
 	r := rand.New(rand.NewSource(time.Now().Unix()))
 	for n := len(vals); n > 0; n-- {
@@ -91,35 +91,35 @@ func (gb *GameBoard) RandInit(percentage int) {
 	gb.cells = vals
 }
 
-// Iterate implements the rules for Conway's Game of Life. It takes the current
-// grid, applies the 4 rules and sets the grid to it's new state.
+//Iterate implements the rules for Conway's Game of Life. It takes the current
+//grid, applies the 4 rules and sets the grid to it's new state.
 func (gb *GameBoard) Iterate() {
 
 	gbOld := NewGameBoard(gb.xSize, gb.ySize)
 	copy(gbOld.cells, gb.cells)
 
-	for y := 0; y < gb.ySize; y++ { // Rows
-		for x := 0; x < gb.xSize; x++ { // Collumns
+	for y := 0; y < gb.ySize; y++ { //Rows
+		for x := 0; x < gb.xSize; x++ { //Collumns
 
-			// Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+			//Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
 			if !gbOld.Get(x, y) && gbOld.Neighbours(x, y) == 3 {
 				gb.Set(x, y, true)
 				continue
 			}
 
-			// Any live cell with fewer than two live neighbors dies, as if by underpopulation.
+			//Any live cell with fewer than two live neighbors dies, as if by underpopulation.
 			if gbOld.Get(x, y) && gbOld.Neighbours(x, y) < 2 {
 				gb.Set(x, y, false)
 				continue
 			}
 
-			// Any live cell with two or three live neighbors lives on to the next generation.
+			//Any live cell with two or three live neighbors lives on to the next generation.
 			if gbOld.Get(x, y) && ((gbOld.Neighbours(x, y) == 2) || (gbOld.Neighbours(x, y) == 3)) {
 				//No need to set, already alive
 				continue
 			}
 
-			// Any live cell with more than three live neighbors dies, as if by overpopulation.
+			//Any live cell with more than three live neighbors dies, as if by overpopulation.
 			if gbOld.Get(x, y) && (gbOld.Neighbours(x, y) > 3) {
 				gb.Set(x, y, false)
 				continue
@@ -148,8 +148,8 @@ func (gb *GameBoard) Equal(gb2 *GameBoard) bool {
 	return true
 }
 
-// Set sets a cell defined by it's x and y coordinates to a given state (alive:
-// true, dead: false)
+//Set sets a cell defined by it's x and y coordinates to a given state (alive:
+//true, dead: false)
 func (gb *GameBoard) Set(x, y int, val bool) {
 	if !gb.InBounds(x, y) {
 		log.Fatal("Invalid Coordinate")
@@ -158,8 +158,8 @@ func (gb *GameBoard) Set(x, y int, val bool) {
 	gb.cells[y*(gb.xSize)+x] = val
 }
 
-// Get retrieves a cell's state by it's x and y coordinates (alive: true, dead:
-// false)
+//Get retrieves a cell's state by it's x and y coordinates (alive: true, dead:
+//false)
 func (gb *GameBoard) Get(x, y int) bool {
 	if !gb.InBounds(x, y) {
 		log.Fatal("Invalid Coordinate")
@@ -193,7 +193,7 @@ func (gb *GameBoard) InBounds(x int, y int) bool {
 		y < gb.ySize)
 }
 
-// Print displays a ASCII representation of the grid to stout
+//Print displays a ASCII representation of the grid to stout
 func (gb *GameBoard) Print() {
 	//Top margin
 	fmt.Print("╔")
@@ -202,10 +202,10 @@ func (gb *GameBoard) Print() {
 	}
 	fmt.Println("╗")
 
-	// Rows
+	//Rows
 	for y := 0; y < gb.ySize; y++ {
 		fmt.Print("║")
-		// Collumns
+		//Collumns
 		for x := 0; x < gb.xSize; x++ {
 			if gb.Get(x, y) {
 				fmt.Print("██")
