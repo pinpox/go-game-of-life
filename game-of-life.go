@@ -165,7 +165,6 @@ func (gb *GameBoard) Get(x, y int) bool {
 		log.Fatal("Invalid Coordinate")
 	}
 
-	// fmt.Println(y*(gb.xSize) + x)
 	return gb.cells[y*(gb.xSize)+x]
 }
 

@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	// "reflect"
 	"testing"
 )
 
@@ -605,6 +604,24 @@ func TestGameBoard_Get(t *testing.T) {
 			if got := gb.Get(tt.x, tt.y); got != tt.want {
 				t.Errorf("GameBoard.Get() = %v, want %v", got, tt.want)
 			}
+		})
+	}
+}
+
+func TestGameBoard_Print(t *testing.T) {
+
+	gb0 := NewGameBoard(5, 5)
+	gb0.RandInit(30)
+
+	tests := []struct {
+		name string
+		gb   *GameBoard
+	}{
+		{"Print randomly initialized board", gb0},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			tt.gb.Print()
 		})
 	}
 }
