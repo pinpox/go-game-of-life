@@ -13,10 +13,10 @@ import (
 
 var (
 	inputX = kingpin.Flag("xsize", "The width of the grid").Short('x').Default("80").Int()
-	inputY = kingpin.Flag("ysize", "The height of the grid").Short('y').Default("15").Int()
+	inputY = kingpin.Flag("ysize", "The height of the grid").Short('y').Default("40").Int()
 	inputI = kingpin.Flag("iterations", "Number of iterations. Any negative number will use the default, infinity").Short('i').Default("-1").Int()
-	inputF = kingpin.Flag("fps", "Frames per second, how log to wait until the next iteration is displayed").Short('f').Default("25").Int()
-	inputP = kingpin.Flag("percentage", "Percentage of living cells at the start").Short('p').Default("35").Int()
+	inputF = kingpin.Flag("fps", "Frames per second, how log to wait until the next iteration is displayed").Short('f').Default("10").Int()
+	inputP = kingpin.Flag("percentage", "Percentage of living cells at the start").Short('p').Default("33").Int()
 )
 
 /*
