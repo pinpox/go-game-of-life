@@ -152,9 +152,6 @@ func (gb *GameBoard) Equal(gb2 *GameBoard) bool {
 // true, dead: false)
 func (gb *GameBoard) Set(x, y int, val bool) {
 	if !gb.InBounds(x, y) {
-
-	}
-	if x > gb.xSize-1 || x < 0 || y > gb.ySize-1 || y < 0 {
 		log.Fatal("Invalid Coordinate")
 	}
 
@@ -164,7 +161,7 @@ func (gb *GameBoard) Set(x, y int, val bool) {
 // Get retrieves a cell's state by it's x and y coordinates (alive: true, dead:
 // false)
 func (gb *GameBoard) Get(x, y int) bool {
-	if x > gb.xSize-1 || x < 0 || y > gb.ySize-1 || y < 0 {
+	if !gb.InBounds(x, y) {
 		log.Fatal("Invalid Coordinate")
 	}
 
