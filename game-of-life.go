@@ -96,7 +96,7 @@ func (gb *GameBoard) RandInit(percentage int) {
 func (gb *GameBoard) Iterate() {
 
 	gbOld := NewGameBoard(gb.xSize, gb.ySize)
-	gbOld.cells = gb.cells
+	copy(gbOld.cells, gb.cells)
 
 	for y := 0; y < gb.ySize; y++ { // Rows
 		for x := 0; x < gb.xSize; x++ { // Collumns
