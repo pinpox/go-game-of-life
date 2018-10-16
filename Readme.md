@@ -3,6 +3,7 @@
 [![codecov](https://codecov.io/gh/binaryplease/go-game-of-life/branch/master/graph/badge.svg)](https://codecov.io/gh/binaryplease/go-game-of-life)
 [![Maintainability](https://api.codeclimate.com/v1/badges/65217f7940ee0e37d474/maintainability)](https://codeclimate.com/github/binaryplease/go-game-of-life/maintainability)
 [![HitCount](http://hits.dwyl.io/binaryplease/go-game-of-life.svg)](http://hits.dwyl.io/binaryplease/go-game-of-life)
+[![Join the chat at https://gitter.im/go-game-of-life/Lobby](https://badges.gitter.im/go-game-of-life/Lobby.svg)](https://gitter.im/go-game-of-life/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
 # Conway's Game of Life
