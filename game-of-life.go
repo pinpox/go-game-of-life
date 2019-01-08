@@ -6,6 +6,7 @@ import (
 	"math/rand"
 	"os"
 	"os/exec"
+	"runtime"
 	"time"
 
 	"gopkg.in/alecthomas/kingpin.v2"
