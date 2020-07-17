@@ -1,8 +1,8 @@
-[![Build Status](https://api.travis-ci.org/binaryplease/go-game-of-life.svg)](http://travis-ci.org/binaryplease/go-game-of-life) [![GoDoc](https://godoc.org/github.com/binaryplease/go-game-of-life?status.svg)](http://godoc.org/github.com/binaryplease/go-game-of-life)
-[![Go Report Card](https://goreportcard.com/badge/github.com/binaryplease/go-game-of-life)](https://goreportcard.com/report/github.com/binaryplease/go-game-of-life)
-[![codecov](https://codecov.io/gh/binaryplease/go-game-of-life/branch/master/graph/badge.svg)](https://codecov.io/gh/binaryplease/go-game-of-life)
-[![Maintainability](https://api.codeclimate.com/v1/badges/65217f7940ee0e37d474/maintainability)](https://codeclimate.com/github/binaryplease/go-game-of-life/maintainability)
-[![HitCount](http://hits.dwyl.io/binaryplease/go-game-of-life.svg)](http://hits.dwyl.io/binaryplease/go-game-of-life)
+[![Build Status](https://api.travis-ci.org/pinpox/go-game-of-life.svg)](http://travis-ci.org/pinpox/go-game-of-life) [![GoDoc](https://godoc.org/github.com/pinpox/go-game-of-life?status.svg)](http://godoc.org/github.com/pinpox/go-game-of-life)
+[![Go Report Card](https://goreportcard.com/badge/github.com/pinpox/go-game-of-life)](https://goreportcard.com/report/github.com/pinpox/go-game-of-life)
+[![codecov](https://codecov.io/gh/pinpox/go-game-of-life/branch/master/graph/badge.svg)](https://codecov.io/gh/pinpox/go-game-of-life)
+[![Maintainability](https://api.codeclimate.com/v1/badges/65217f7940ee0e37d474/maintainability)](https://codeclimate.com/github/pinpox/go-game-of-life/maintainability)
+[![HitCount](http://hits.dwyl.io/pinpox/go-game-of-life.svg)](http://hits.dwyl.io/pinpox/go-game-of-life)
 [![Join the chat at https://gitter.im/go-game-of-life/Lobby](https://badges.gitter.im/go-game-of-life/Lobby.svg)](https://gitter.im/go-game-of-life/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
@@ -37,8 +37,8 @@ The evolution of the cells follows this four simple rules:
 Just get the source and build/install as normal
 
 ```
-go get -u github.com/binaryplease/go-game-of-life
-go install github.com/binaryplease/go-game-of-life
+go get -u github.com/pinpox/go-game-of-life
+go install github.com/pinpox/go-game-of-life
 ```
 
 ## Usage
