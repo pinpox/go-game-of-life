@@ -2,7 +2,6 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/pinpox/go-game-of-life)](https://goreportcard.com/report/github.com/pinpox/go-game-of-life)
 [![codecov](https://codecov.io/gh/pinpox/go-game-of-life/branch/master/graph/badge.svg)](https://codecov.io/gh/pinpox/go-game-of-life)
 [![Maintainability](https://api.codeclimate.com/v1/badges/65217f7940ee0e37d474/maintainability)](https://codeclimate.com/github/pinpox/go-game-of-life/maintainability)
-[![HitCount](http://hits.dwyl.io/pinpox/go-game-of-life.svg)](http://hits.dwyl.io/pinpox/go-game-of-life)
 [![Join the chat at https://gitter.im/go-game-of-life/Lobby](https://badges.gitter.im/go-game-of-life/Lobby.svg)](https://gitter.im/go-game-of-life/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
